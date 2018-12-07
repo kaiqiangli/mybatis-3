@@ -41,6 +41,13 @@ public class MetaClassTest {
   }
 
   @Test
+  public void hasGetterTest() {
+    ReflectorFactory reflectorFactory = new DefaultReflectorFactory();
+    MetaClass metaClass = MetaClass.forClass(RichType.class, reflectorFactory);
+    assertTrue(metaClass.hasGetter("richType"));
+  }
+
+  @Test
   public void shouldTestDataTypeOfGenericMethod() {
     ReflectorFactory reflectorFactory = new DefaultReflectorFactory();
     MetaClass meta = MetaClass.forClass(GenericConcrete.class, reflectorFactory);

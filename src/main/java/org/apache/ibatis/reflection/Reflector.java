@@ -73,9 +73,14 @@ public class Reflector {
     }
   }
 
+  /**
+   * 获得默认构造方法
+   * @param clazz
+   */
   private void addDefaultConstructor(Class<?> clazz) {
     Constructor<?>[] consts = clazz.getDeclaredConstructors();
     for (Constructor<?> constructor : consts) {
+      //获得构造方法的参数类型，如果有参数则不是默认构造方法
       if (constructor.getParameterTypes().length == 0) {
           this.defaultConstructor = constructor;
       }

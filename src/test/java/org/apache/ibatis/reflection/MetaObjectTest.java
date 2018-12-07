@@ -45,6 +45,14 @@ public class MetaObjectTest {
   }
 
   @Test
+  public void testGetAndSetPrivateField() {
+    RichType richType = new RichType();
+    MetaObject meta = SystemMetaObject.forObject(richType);
+    meta.setValue("richProperty", "new");
+    assertEquals("new", meta.getValue("richProperty"));
+  }
+
+  @Test
   public void shouldGetAndSetNestedField() {
     RichType rich = new RichType();
     MetaObject meta = SystemMetaObject.forObject(rich);

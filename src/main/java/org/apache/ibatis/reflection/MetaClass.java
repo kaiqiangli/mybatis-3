@@ -53,6 +53,7 @@ public class MetaClass {
     return prop.length() > 0 ? prop.toString() : null;
   }
 
+
   public String findProperty(String name, boolean useCamelCaseMapping) {
     if (useCamelCaseMapping) {
       name = name.replace("_", "");
@@ -78,6 +79,11 @@ public class MetaClass {
     }
   }
 
+  /**
+   * 获得指定属性的getting方法的返回类型
+   * @param name
+   * @return
+   */
   public Class<?> getGetterType(String name) {
     PropertyTokenizer prop = new PropertyTokenizer(name);
     if (prop.hasNext()) {
@@ -131,6 +137,11 @@ public class MetaClass {
     return null;
   }
 
+  /**
+   * 获取属性是否有setting的方法
+   * @param name
+   * @return
+   */
   public boolean hasSetter(String name) {
     PropertyTokenizer prop = new PropertyTokenizer(name);
     if (prop.hasNext()) {

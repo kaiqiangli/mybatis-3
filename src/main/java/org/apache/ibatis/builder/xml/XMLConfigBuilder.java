@@ -92,9 +92,11 @@ public class XMLConfigBuilder extends BaseBuilder {
   }
 
   public Configuration parse() {
+    // 已经解析过，则抛异常
     if (parsed) {
       throw new BuilderException("Each XMLConfigBuilder can only be used once.");
     }
+    // 标记已解析状态
     parsed = true;
     parseConfiguration(parser.evalNode("*[local-name()='configuration']"));
     return configuration;

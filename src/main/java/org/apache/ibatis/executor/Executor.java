@@ -34,18 +34,25 @@ public interface Executor {
 
   ResultHandler NO_RESULT_HANDLER = null;
 
+  // 插入 更新 或 删除，由ms的sql决定
   int update(MappedStatement ms, Object parameter) throws SQLException;
 
+  // 查询，有resultHandler,cacheKey,boundSql
   <E> List<E> query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey cacheKey, BoundSql boundSql) throws SQLException;
 
+  // 查询，有resultHandler
   <E> List<E> query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException;
 
+  // 返回cusor
   <E> Cursor<E> queryCursor(MappedStatement ms, Object parameter, RowBounds rowBounds) throws SQLException;
 
+  // 刷入批处理语句
   List<BatchResult> flushStatements() throws SQLException;
 
+  // 提交事务
   void commit(boolean required) throws SQLException;
 
+  // 回滚事务
   void rollback(boolean required) throws SQLException;
 
   CacheKey createCacheKey(MappedStatement ms, Object parameterObject, RowBounds rowBounds, BoundSql boundSql);

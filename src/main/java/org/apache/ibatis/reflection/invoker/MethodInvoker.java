@@ -31,13 +31,16 @@ public class MethodInvoker implements Invoker {
   public MethodInvoker(Method method) {
     this.method = method;
 
+    // 参数大小为1时，为set方法，设置type为方法参数[0]
     if (method.getParameterTypes().length == 1) {
       type = method.getParameterTypes()[0];
+      // 否则为get方法,设置type为returnType
     } else {
       type = method.getReturnType();
     }
   }
 
+  // 执行指定方法
   @Override
   public Object invoke(Object target, Object[] args) throws IllegalAccessException, InvocationTargetException {
     try {

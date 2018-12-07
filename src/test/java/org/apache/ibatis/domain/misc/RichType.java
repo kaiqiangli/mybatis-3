@@ -48,7 +48,7 @@ public class RichType {
     return richProperty;
   }
 
-  public void setRichProperty(String richProperty) {
+  private void setRichProperty(String richProperty) {
     this.richProperty = richProperty;
   }
 
